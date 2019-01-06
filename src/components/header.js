@@ -127,7 +127,7 @@ class UserHeader extends Component {
                             </Button>
                         </Col>
                         <Col span={ 2 }>
-                            <Button type='primary'><Link to="/login"> Register </Link></Button>
+                            <Button type='primary'><Link to="/register"> Register </Link></Button>
                         </Col>
                     </Row>
                     <WrappedLoginForm
