@@ -22,7 +22,7 @@ class ItemEditPage extends Component {
     {
       if (document.getElementById('editor'))
       {
-        this.state.smde = new SimpleMDE({
+        this.setState({ smde: new SimpleMDE({
           element: document.getElementById('editor').childElementCount,
           autofocus: true,
           autosave: true,
@@ -41,10 +41,10 @@ class ItemEditPage extends Component {
               },
             });
           },
-        });
+        })})
       }
-            // get current user 
-            this.props.currentUser()
+      // get current user 
+      this.props.currentUser()
     }
     
     getSmdeValue = () => {
