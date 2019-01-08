@@ -5,8 +5,11 @@
   "dependencies": {
     "antd": "^3.11.2",
     "axios": "^0.18.0",
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
     "highlight.js": "^9.13.1",
     "marked": "^0.5.2",
+    "path": "^0.12.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
@@ -18,7 +21,8 @@
     "simplemde": "^1.11.2"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "node server.js",
+    "startDev": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
