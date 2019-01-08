@@ -104,6 +104,7 @@ export const usersReducer = (state = {}, action) => {
                 email: userInfo.email, 
                 _id: userInfo._id,
                 introduce: userInfo.introduce,
+                user_type: userInfo.user_type,
             }
             return {
                 ...state,

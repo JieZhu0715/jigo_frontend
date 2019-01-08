@@ -112,6 +112,7 @@ class ItemEditPage extends Component {
         
         if (!user || user.user_type !== 1)
         {
+          // TODO validate user_type from server
           return (
             <div>You need to be an admin to access this page</div>
           )
