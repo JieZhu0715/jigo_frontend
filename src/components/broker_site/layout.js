@@ -29,7 +29,8 @@ class LayoutPage extends Component
                   >
                     <SubMenu key="broker" title={<span><Icon type="laptop" />Pick up requests</span> }>
                       <Menu.Item key="item_edit">Edit Item</Menu.Item>
-                    </SubMenu> 
+                    </SubMenu>
+                    <Menu.Item key="manage_orders">Manage Orders</Menu.Item> 
                   </Menu>
                 </Sider>
                 <Layout style={{ padding: '0 24px 24px' }}>

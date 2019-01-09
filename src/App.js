@@ -12,6 +12,7 @@ import UserRequestsPage from './components/userRequestsPage'
 
 import BrokerSiteLayout from './components/broker_site/layout'
 import ItemEditPage from './components/broker_site/itemEditPage'
+import ManageOrdersPage from './components/broker_site/manageOrdersPage'
 
 class App extends Component {
 
@@ -28,7 +29,10 @@ class App extends Component {
             <Route path='/orders' render={ props => <Layout><UserOrdersPage /></Layout> }/>
             <Route path='/requests' render={ props => <Layout><UserRequestsPage /></Layout> }/>
 
-            <Route path='/broker_site/item_edit' render={ props => <BrokerSiteLayout><ItemEditPage { ...props } /></BrokerSiteLayout> } />
+
+            <Route path='/broker_site/item_edit' render={ props => <BrokerSiteLayout><ItemEditPage /></BrokerSiteLayout> } />
+            <Route path='/broker_site/item_edit/:_id' render={ props => <BrokerSiteLayout><ItemEditPage { ...props } /></BrokerSiteLayout> } />
+            <Route path='/broker_site/manage_orders' render={ props => <BrokerSiteLayout> <ManageOrdersPage /> </BrokerSiteLayout>} />
           </Switch>
         </BrowserRouter>
     );

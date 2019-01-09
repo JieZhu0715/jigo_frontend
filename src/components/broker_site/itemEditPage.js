@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Input, Button, Modal, } from 'antd'
 
-import SimpleMDE from 'simplemde'
-import marked from 'marked'
-import highlight from 'highlight.js'
+import SimpleMDE from 'react-simplemde-editor';
 
 import { addItem } from '../../actions/items'
 import { currentUser } from '../../actions/users'
+
 
 const FormItem = Form.Item;
 
@@ -15,44 +14,21 @@ class ItemEditPage extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {}
+        this.state = {};
     }
-
+    
     componentDidMount() 
     {
-      if (document.getElementById('editor'))
-      {
-        this.setState({ smde: new SimpleMDE({
-          element: document.getElementById('editor').childElementCount,
-          autofocus: true,
-          autosave: true,
-          previewRender(plainText) {
-            return marked(plainText, {
-              renderer: new marked.Renderer(),
-              gfm: true,
-              pedantic: false,
-              sanitize: false,
-              tables: true,
-              breaks: true,
-              smartLists: true,
-              smartypants: true,
-              highlight(code) {
-                return highlight.highlightAuto(code).value;
-              },
-            });
-          },
-        })})
-      }
       // get current user 
       this.props.currentUser()
     }
     
     getSmdeValue = () => {
-        return this.state.smde.value();
+        return this.state.mdeValue;
     }
     
     setSmdeValue = content => {
-        this.state.smde.value(content);
+        this.setState({ mdeValue: content }); 
     }
 
     showModal = () => {
@@ -62,7 +38,6 @@ class ItemEditPage extends Component {
       }
     
     handleOk = (e) => {
-        console.log(e);
         this.setState({
           visible: false,
         });
@@ -79,12 +54,15 @@ class ItemEditPage extends Component {
         this.props.form.resetFields();
     }
 
+    handleSMDEChange = value => {
+      this.setState({ mdeValue: value });
+    }
+    
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.form.validateFields((err, values) => {
             values.content = this.getSmdeValue()
             values.created_by = this.props.user._id
-            console.log(values)
           if (!err) {
               this.props.addItem(values, () => {
                 this.handleReset()
@@ -152,7 +130,53 @@ class ItemEditPage extends Component {
           )}
         </FormItem>
         <FormItem {...formItemLayout} label="Content">
-            <textarea id="editor" style={{ marginBottom: 20, width: 800 }} size="large" rows={6} ></textarea>
+            <SimpleMDE 
+              id='content' 
+              onChange={ this.handleSMDEChange } 
+              options= { {
+                spellChecker: true,
+                forceSync: true,
+                autosave: {
+                  enabled: true,
+                  delay: 5000,
+                  uniqueId: 'article_content',
+                },
+                tabSize: 4,
+                toolbar: [
+                  'bold',
+                  'italic',
+                  'heading',
+                  '|',
+                  'quote',
+                  'code',
+                  'table',
+                  'horizontal-rule',
+                  'unordered-list',
+                  'ordered-list',
+                  '|',
+                  'link',
+                  'image',
+                  '|',
+                  'side-by-side',
+                  'fullscreen',
+                  '|',
+                  {
+                    name: 'guide',
+                    action () {
+                      const win = window.open(
+                        'https://github.com/riku/Markdown-Syntax-CN/blob/master/syntax.md',
+                        '_blank',
+                      );
+                      if (win) {
+                        // Browser has allowed it to be opened
+                        win.focus();
+                      }
+                    },
+                    className: 'fa fa-info-circle',
+                    title: 'Markdown 语法！',
+                  },
+                ],
+              }} />
         </FormItem>
         <FormItem>
             <Button type="primary" htmlType="submit">Save</Button>

@@ -8,6 +8,15 @@ const { Content, Sider } = Layout;
 
 class LayoutPage extends Component
 {   
+  state = {
+    collapsed: false,
+  };
+
+  onCollapse = (collapsed) => {
+    console.log(collapsed);
+    this.setState({ collapsed });
+  }
+
     onMenuClick = item => {
         // Jump to main page
         this.props.history.push('/' + item.key);
@@ -18,19 +27,24 @@ class LayoutPage extends Component
             <Layout>
                 <UserHeader />
               <Layout>
-                <Sider breakpoint="lg" collapsedWidth="0" width={200} style={{ background: '#fff' }}>
+                <Sider 
+                  collapsible
+                  collapsed={this.state.collapsed}
+                  onCollapse={this.onCollapse}
+                  breakpoint="lg" 
+                  // collapsedWidth="0" 
+                  width={200} 
+                  style={{ background: '#fff' }}>
                   <Menu
                     // theme="dark"
                     mode="inline"
                     defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['items']}
+                    defaultOpenKeys={['manage']}
                     style={{ height: '100%', borderRight: 0 }}
                     onClick={ this.onMenuClick }
                   >
-                    <SubMenu key="items" title={<span><Icon type="user" />Buy</span> }>
-                      <Menu.Item key="items">浏览商品</Menu.Item>
+                    <Menu.Item key="items">浏览商品</Menu.Item>
                       <Menu.Item key="request_item">添加其他</Menu.Item>
-                    </SubMenu>
                     <SubMenu key="manage" title={<span><Icon type="user" />管理</span> }>
                       <Menu.Item key="profile"><Icon type="user"/>用户资料</Menu.Item>
                       <Menu.Item key="orders">我的订单</Menu.Item>
