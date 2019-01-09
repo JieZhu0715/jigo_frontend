@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Form, Icon, Input, Button, Modal, } from 'antd';
+import { Form, Icon, Input, InputNumber, Button, Modal, } from 'antd';
 import { request } from '../actions/request'
 
 import '../css/App.css';
@@ -81,13 +81,13 @@ class ItemRequestPage extends Component {
                     </FormItem>
                     <FormItem>
                     {getFieldDecorator('quantity', {
-                        rules: [{ message: 'Please input item quantity' }],
+                    rules: [{ message: 'Select quantity' }],
                     })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="您将购买几件该商品(可选填)" />
+                        <InputNumber placeholder="您将购买几件该商品(可选填)" />
                     )}
                     </FormItem>
                     <FormItem>
-                        <Button type="primary" htmlType="submit">Request</Button>
+                        <Button type="primary" htmlType="submit">添加</Button>
                     </FormItem>
             </Form>
             <Modal
