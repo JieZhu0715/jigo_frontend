@@ -31,11 +31,11 @@ class ProfilePage extends Component {
                   // dataSource={data}
                   // renderItem={item => (<List.Item>{item}</List.Item>)}
                 >
-                  <List.Item>Name: { user.name }</List.Item>
-                  <List.Item>Email: { user.email }</List.Item>
-                  <List.Item>Introduce: { user.introduce }</List.Item>
+                  <List.Item>用户名: { user.name }</List.Item>
+                  <List.Item>邮箱: { user.email }</List.Item>
+                  <List.Item>简介: { user.introduce }</List.Item>
                   <List.Item>
-                    <Button type="Danger" onClick = { this.onLogoutClick }> Log out </Button>
+                    <Button type="Danger" onClick = { this.onLogoutClick }> 注销用户 </Button>
                   </List.Item>
                 </List>
                 
@@ -44,7 +44,7 @@ class ProfilePage extends Component {
           }
           { !user &&  (          
             <div>
-              You must login to review user profile
+              登陆以后查看用户资料
             </div>
             )
           }

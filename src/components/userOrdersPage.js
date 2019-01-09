@@ -18,7 +18,7 @@ class Userorders extends Component {
             <div>
             <List
             itemLayout="horizontal"
-            header={ <div>Your orders</div> }
+            header={ <div>您的订单</div> }
             size="large"
             dataSource={this.props.user_orders}
             renderItem={order => (
@@ -28,10 +28,10 @@ class Userorders extends Component {
                     title={ order.item_id.name }
                 />
                     <div> 
-                        <p> Item Name: { order.item_id.name }</p>
-                        <p> Date: { order.createdAt }</p>
-                        <p> Quantity: { order.quantity }</p> 
-                        <p> Status: { order.status }</p>
+                        <p> 商品名称: { order.item_id.name }</p>
+                        <p> 下单日期: { order.createdAt }</p>
+                        <p> 数量: { order.quantity }</p> 
+                        <p> 当前状态: { order.status }</p>
                     </div>
                 </List.Item>
                 )}
@@ -51,7 +51,7 @@ class UserOrdersPage extends Component {
             )
           }
           { !this.props.current_user &&  (          
-            <div> You must login to view orders! </div>
+            <div> 登陆以后查看用户订单 </div>
             )
           }
         </div>

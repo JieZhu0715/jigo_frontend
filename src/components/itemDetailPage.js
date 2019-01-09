@@ -84,7 +84,7 @@ class ItemDetailPage extends Component {
                   values.user_id = '5af584ebb62aae2fa8e406a2'
                   if (!values.email && !values.wechat)
                   {
-                    this.showModal('You have not logged in. In order to make an order, you have to login or input email/wechat.')
+                    this.showModal('您还没有登陆! 游客下单请输入邮箱或者微信.')
                     return 
                   }
               }
@@ -92,7 +92,7 @@ class ItemDetailPage extends Component {
 
               this.props.order(values, () => {
                     this.handleReset()
-                    this.showModal('You made an order successfully. Our staff will contact you shortly.')
+                    this.showModal('已经成功下单! 工作人员会联系您.')
               })
           }
         });
@@ -130,7 +130,7 @@ class ItemDetailPage extends Component {
                     rules: [{ 
                         message: 'Please input your Email!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email(Optional)" />
+                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="邮箱(可选填)" />
                     )}
                     </FormItem>
 
@@ -139,7 +139,7 @@ class ItemDetailPage extends Component {
                     rules: [{ 
                         message: 'Please input your Wechat!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Wechat(Optional)" />
+                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="微信(可选填)" />
                     )}
                     </FormItem>
 
@@ -152,12 +152,12 @@ class ItemDetailPage extends Component {
                     </FormItem>
                 
                     <FormItem>
-                        <Button type="primary" htmlType="submit" className="login-form-button">Order</Button>
+                        <Button type="primary" htmlType="submit" className="login-form-button">下单</Button>
                     </FormItem>
 
                 </Form>
                 <Modal
-                    title="Success"
+                    title="下单完成"
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}>

@@ -45,7 +45,6 @@ class UserRegisterPage extends Component {
           console.log(values)
             if (!err) {
                 this.props.register(values, () => {
-                console.log('register successfully, please log in')
                 this.handleReset();
                 this.showModal()
             })
@@ -56,7 +55,7 @@ class UserRegisterPage extends Component {
     compareToFirstPassword = (rule, value, callback) => {
         const form = this.props.form;
         if (value && value !== form.getFieldValue('password')) {
-          callback('Two passwords that you enter is inconsistent!');
+          callback('请确保输入相同密码!');
         } else {
           callback();
         }
@@ -79,42 +78,42 @@ class UserRegisterPage extends Component {
                 <Form onSubmit={this.handleSubmit} className="login-form">
                     <FormItem>
                     {getFieldDecorator('name', {
-                    rules: [{ required: true, message: 'Please input your user name!' }],
+                    rules: [{ required: true, message: '请输入用户名' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="User name" />
+                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />
                     )}
                     </FormItem>
                     <FormItem>
                     {getFieldDecorator('email', {
-                    rules: [{ required: true, message: 'Please input your Email!' }],
+                    rules: [{ required: true, message: '请输入邮箱用于登陆!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
+                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="登录邮箱" />
                     )}
                     </FormItem>
                     <FormItem>
                     {getFieldDecorator('password', {
-                    rules: [{ required: true, message: 'Please input your Password!' }, { validator: this.validateToNextPassword, }],
+                    rules: [{ required: true, message: '请输入密码!' }, { validator: this.validateToNextPassword, }],
                     })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
                     )}
                     </FormItem>
                     <FormItem>
                     {getFieldDecorator('confirm_password', {
-                    rules: [{ required: true, message: 'Please input your Password!' }, { validator: this.compareToFirstPassword, }],
+                    rules: [{ required: true, message: '请重新输入密码' }, { validator: this.compareToFirstPassword, }],
                     })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Confirm Password" />
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="确认密码" />
                     )}
                     </FormItem>
                     <FormItem>
-                        <Button type="primary" htmlType="submit" className="login-form-button">Register</Button>
+                        <Button type="primary" htmlType="submit" className="login-form-button">注册</Button>
                     </FormItem>
                 </Form>
                 <Modal
-                    title="Success"
+                    title="注册成功"
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}>
-                        <p> You successfully regisered as a user. Happy hacking the site. </p>
+                        <p> 您已经成功注册,请返回登. </p>
                 </Modal>
             </header>
         </div>

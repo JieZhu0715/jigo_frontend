@@ -20,7 +20,7 @@ class ItemRequestPage extends Component {
         let { current_user } = this.props
         if (!current_user) 
         {
-            this.showModal("You have to login to make a request!")
+            this.showModal("您还没有登陆, 请登陆发送请求.")
         }
         else 
         {
@@ -29,7 +29,7 @@ class ItemRequestPage extends Component {
                       values.user_id = current_user._id
                       this.props.request(values, () => {
                         
-                        this.showModal("successfully request a new item, our staff will pick up this request soon.");
+                        this.showModal("成功请求了一个新商品,我们会添加它到系统.");
                         this.handleReset()
                     })
                 }
@@ -69,14 +69,21 @@ class ItemRequestPage extends Component {
                     {getFieldDecorator('description', {
                     rules: [{ required: true, message: 'Please input some description!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Description" />
+                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="商品简介" />
                     )}
                     </FormItem>
                     <FormItem>
                     {getFieldDecorator('reference', {
-                        rules: [{ required: true, message: 'Please input your reference' }],
+                        rules: [{ message: 'Please input your reference' }],
                     })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Website or seller site" />
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="官网或者其他在售网站(可选填)" />
+                    )}
+                    </FormItem>
+                    <FormItem>
+                    {getFieldDecorator('quantity', {
+                        rules: [{ message: 'Please input item quantity' }],
+                    })(
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="您将购买几件该商品(可选填)" />
                     )}
                     </FormItem>
                     <FormItem>
@@ -84,12 +91,12 @@ class ItemRequestPage extends Component {
                     </FormItem>
             </Form>
             <Modal
-                    title="From the page: "
+                    title="添加请求: "
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={ this.handleCancel }>
                         <p> { this.state.message } </p>
-                </Modal>
+            </Modal>
         </div>
       );
     }

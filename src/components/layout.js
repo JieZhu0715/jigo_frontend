@@ -28,12 +28,12 @@ class LayoutPage extends Component
                     onClick={ this.onMenuClick }
                   >
                     <SubMenu key="items" title={<span><Icon type="user" />Buy</span> }>
-                      <Menu.Item key="items">All items</Menu.Item>
-                      <Menu.Item key="request_item">Add new item</Menu.Item>
+                      <Menu.Item key="items">浏览商品</Menu.Item>
+                      <Menu.Item key="request_item">添加其他</Menu.Item>
                     </SubMenu>
-                    <SubMenu key="manage" title={<span><Icon type="user" />Manage</span> }>
-                      <Menu.Item key="profile"><Icon type="user"/>Profile</Menu.Item>
-                      <Menu.Item key="orders">My orders</Menu.Item>
+                    <SubMenu key="manage" title={<span><Icon type="user" />管理</span> }>
+                      <Menu.Item key="profile"><Icon type="user"/>用户资料</Menu.Item>
+                      <Menu.Item key="orders">我的订单</Menu.Item>
                     </SubMenu>
                   </Menu>
                 </Sider>

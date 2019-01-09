@@ -21,23 +21,23 @@ class LoginForm extends Component {
                 visible={visible}
                 title="Login"
                 footer={[
-                <Button key="back" onClick={onCancel}>Cancel</Button>,
-                <Button key="submit" type="primary" loading={loading} onClick={onCreate}> Submit </Button>,]}
+                <Button key="back" onClick={onCancel}>取消</Button>,
+                <Button key="submit" type="primary" loading={loading} onClick={onCreate}> 登陆 </Button>,]}
             >
 
                 <Form onSubmit={this.handleSubmit} className="login-form">
                     <FormItem>
                     {getFieldDecorator('email', {
-                    rules: [{ required: true, message: 'Please input your Email!' }],
+                    rules: [{ required: true, message: '请输入有效邮箱!' }],
                     })(
-                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
+                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="邮箱" />
                     )}
                     </FormItem>
                     <FormItem>
                     {getFieldDecorator('password', {
-                    rules: [{ required: true, message: 'Please input your Password!' }],
+                    rules: [{ required: true, message: '请输入你的密码!' }],
                     })(
-                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
                     )}
                     </FormItem>
                     <FormItem>
@@ -125,12 +125,10 @@ class UserHeader extends Component {
                     <div>
                     <Row type="flex" justify="end">
                         <Col span={ 2 }>
-                            <Button onClick= { this.showModal }>
-                                Login
-                            </Button>
+                            <Button onClick= { this.showModal }> 登陆 </Button>
                         </Col>
                         <Col span={ 2 }>
-                            <Button type='primary'><Link to="/login"> Register </Link></Button>
+                            <Button type='primary'><Link to="/login"> 注册 </Link></Button>
                         </Col>
                     </Row>
                     <WrappedLoginForm
