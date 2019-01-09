@@ -83,7 +83,7 @@ class ItemRequestPage extends Component {
                     {getFieldDecorator('quantity', {
                     rules: [{ message: 'Select quantity' }],
                     })(
-                        <InputNumber placeholder="您将购买几件该商品(可选填)" />
+                        <div> <InputNumber style={{ width: '100%' }} placeholder="您将购买几件该商品(可选填)" /> </div>
                     )}
                     </FormItem>
                     <FormItem>
